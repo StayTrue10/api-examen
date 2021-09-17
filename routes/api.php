@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('registrar', 'ReservacionController@guardarUsuario');
 Route::post('reservacion', 'ReservacionController@guardar');
-Route::get('reservacion/{rfc}', 'ReservacionController@buscar');
-Route::post('reservacion/{rfc}', 'ReservacionController@actualizar');
+Route::get('reservacion/{folio}', 'ReservacionController@buscar');
+Route::post('reservacion/{folio}', 'ReservacionController@actualizar');
 Route::get('filtros', 'ReservacionController@filtros');

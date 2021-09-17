@@ -9,19 +9,19 @@ use Illuminate\Support\Facades\DB;
 
 class ReservacionController extends Controller {
     public function buscar() {
-        $reservacion = Reservacion::where('rfc', request('rfc'))->first();
+        $reservacion = Reservacion::where('id', request('folio'))->first();
         return $reservacion;
     }
     public function guardarUsuario() {
-        $reservacion = new Usuario;
-        $reservacion->nombre = request('nombre');
-        $reservacion->apellido = request('apellido');
-        $reservacion->fecha = request('fecha');
-        $reservacion->correo = request('correo');
-        $reservacion->numero = request('numero');
-        $reservacion->rfc = request('rfc');
-        $reservacion->usuario = request('usuario');
-        $reservacion->save();
+        $usuario = new Usuario;
+        $usuario->nombre = request('nombre');
+        $usuario->apellido = request('apellido');
+        $usuario->fecha = request('fecha');
+        $usuario->correo = request('correo');
+        $usuario->numero = request('numero');
+        $usuario->rfc = request('rfc');
+        $usuario->usuario = request('usuario');
+        $usuario->save();
     }
     public function guardar() {
         $reservacion = new Reservacion;
@@ -29,11 +29,12 @@ class ReservacionController extends Controller {
         $reservacion->id_mesa = request('mesa');
         $reservacion->id_horario = request('horario');
         $reservacion->factura = request('factura');
+        $reservacion->estatus = request('mesa').','.request('horario').','.(request('horario')+1);
         $reservacion->save();
         return $reservacion->id;
     }
     public function actualizar() {
-        $reservacion = Reservacion::where('rfc', request('rfc'))->first();
+        $reservacion = Reservacion::where('id', request('folio'))->first();
         $reservacion->id_mesa = request('mesa');
         $reservacion->id_horario = request('horario');
         $reservacion->factura = request('factura');
